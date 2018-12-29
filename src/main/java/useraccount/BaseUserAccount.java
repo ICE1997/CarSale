@@ -1,20 +1,17 @@
 package useraccount;
 
-import usertype.BaseUsetType;
+import usertype.BaseUserType;
 import usertype.Operator;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-public class BaserAccount {
+public class BaseUserAccount {
     private String table_name;
-    private String username;
-    private String password;
-    private Statement stmt;
+    protected String username;
+    protected String password;
+    protected Statement stmt;
 
-    public BaserAccount(BaseUsetType baseUsetType, Connection conn) throws SQLException {
+    public BaseUserAccount(BaseUserType baseUsetType, Connection conn) throws SQLException {
         this.username = baseUsetType.getName ();
         this.password = baseUsetType.getPassword ();
         stmt = conn.createStatement ();

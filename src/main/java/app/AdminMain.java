@@ -1,5 +1,6 @@
 package app;
 
+import event.CloseWindowEvent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ public class AdminMain extends Application {
         Parent root = FXMLLoader.load (getClass ().getResource (LAYOUT));
         Scene scene = new Scene (root);
         primaryStage.setScene (scene);
+        primaryStage.setOnCloseRequest(new CloseWindowEvent());
         primaryStage.show ();
     }
 }
