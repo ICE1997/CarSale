@@ -56,7 +56,7 @@ public class CTLMain implements Initializable {
 
     private final String MESSAGE_ACCOUNT_NOT_FOUND = "账户不存在！";//提示信息
 
-    private final String MESSAGE_YOU_FIND_BUG = "恭喜，发现一个BUg!";//提示信息
+    private final String MESSAGE_YOU_FIND_BUG = "恭喜，发现一个BUG!";//提示信息
 
     private BaseUserAccount userAccount;
 
@@ -150,7 +150,7 @@ public class CTLMain implements Initializable {
     }
 
     class LoginErrorAlert extends Alert{
-        public LoginErrorAlert(String contentText) {
+        LoginErrorAlert(String contentText) {
             super(AlertType.ERROR,contentText);
         }
     }
@@ -169,10 +169,6 @@ public class CTLMain implements Initializable {
                     if (judgeUserType() == USER_TYPE_OPERATOR) {
                         OperatorAccount operatorAccount = (OperatorAccount) userAccount;
                         Operator operator = operatorAccount.getFullAccount();
-//                        System.out.println(operator.getBaseP());
-//                        System.out.println(operator.getSaleP());
-//                        System.out.println(operator.getStockP());
-//                        System.out.println(operator.getWmP());
                         switchTo(new OperatorMain(operator));
                     }
                     if (judgeUserType() == USER_TYPE_ADMIN) {
