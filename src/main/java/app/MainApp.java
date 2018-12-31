@@ -16,6 +16,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(new CloseWindowEvent());
+        primaryStage.setTitle ("登录");
         primaryStage.setResizable(false);
         primaryStage.show();
     }

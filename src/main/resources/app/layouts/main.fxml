@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CTLMain">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CTLMain">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -51,5 +51,6 @@
       <PasswordField fx:id="input_password" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="4" />
       <RadioButton fx:id="user_type_operator" mnemonicParsing="false" text="操作员" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <RadioButton fx:id="user_type_admin" mnemonicParsing="false" text="管理员" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Label alignment="CENTER" prefHeight="24.0" prefWidth="245.0" text="汽车销售管理系统" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1" />
    </children>
 </GridPane>

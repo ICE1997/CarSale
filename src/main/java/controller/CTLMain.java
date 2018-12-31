@@ -137,6 +137,7 @@ public class CTLMain implements Initializable {
                         return false;
                     }
                 } else {
+                    System.out.println (MESSAGE_ACCOUNT_NOT_FOUND);
                     new LoginErrorAlert(MESSAGE_ACCOUNT_NOT_FOUND).show();
                     return false;
                 }
