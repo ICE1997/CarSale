@@ -40,10 +40,15 @@ public class OperatorMain extends Application {
         primaryStage.setOnCloseRequest(new CloseWindowEvent());
         primaryStage.show();
         tabPane = (TabPane) scene.lookup("#tab_pane");
-        initSurface();
+        if(operator != null) {
+            initSurface();
+        }else {
+            System.out.println("无返回用户");
+        }
     }
 
     private void initSurface() throws IOException {
+//        System.out.println(operator.getBaseP());
         if (operator.getBaseP()) {
             tab_base = new Tab("基础信息管理");
             tab_base.setId("tab_base");

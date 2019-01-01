@@ -8,8 +8,10 @@ import java.sql.SQLException;
 
 public class AdminAccount extends BaseUserAccount {
     private final String table_name = "admin_account";
-    public AdminAccount(Admin admin, Connection conn) throws SQLException {
-        super(admin,conn);
-        super.setSqlTable (table_name);
+
+    public AdminAccount(String workNum, String password, Connection conn) throws SQLException {
+        super(workNum, password, conn);
+        super.setSqlTable(table_name);
     }
+
 }

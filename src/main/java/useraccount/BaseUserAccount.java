@@ -1,24 +1,24 @@
 package useraccount;
 
-import usertype.BaseUserType;
+import usertype.Admin;
 import usertype.Operator;
 
 import java.sql.*;
 
 public class BaseUserAccount {
     private String table_name;
-    protected String username;
+    protected String workNum;
     protected String password;
     protected Statement stmt;
 
-    public BaseUserAccount(BaseUserType baseUsetType, Connection conn) throws SQLException {
-        this.username = baseUsetType.getName ();
-        this.password = baseUsetType.getPassword ();
-        stmt = conn.createStatement ();
+    BaseUserAccount(String workNum, String password, Connection conn) throws SQLException {
+        this.workNum = workNum;
+        this.password = password;
+        stmt = conn.createStatement();
     }
 
     public boolean login() throws SQLException {
-        String sql = " SELECT * FROM " + table_name + " WHERE username = '" + username + "'" + " AND password = '" + password + "'";
+        String sql = " SELECT * FROM " + table_name + " WHERE username = '" + workNum + "'" + " AND password = '" + password + "'";
         ResultSet resultSet = stmt.executeQuery (sql);
         if (resultSet.next ()) {
             return true;
@@ -28,7 +28,7 @@ public class BaseUserAccount {
     }
 
     public boolean isExist() throws SQLException {
-        String sql = " SELECT * FROM " + table_name + " WHERE username = '" + this.username + "'";
+        String sql = " SELECT * FROM " + table_name + " WHERE username = '" + this.workNum + "'";
         ResultSet resultSet = stmt.executeQuery (sql);
         if (resultSet.next ()) {
             return true;

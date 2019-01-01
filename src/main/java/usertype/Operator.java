@@ -1,21 +1,29 @@
 package usertype;
 
-public class Operator extends BaseUserType {
+public class Operator {
+    private String workNum;
     private Boolean baseP = false;
     private Boolean stockP = false;
     private Boolean saleP = false;
     private Boolean wmP = false;
+    private String name;
+    private String gender;
+    private String age;
+    private String birthday;
+    private String id_num;
+    private String phone_num;
+    private String address;
 
-    public Operator(String name,String password){
-        super(name, password);
-    }
-
-    public Operator(String name, String password, Boolean baseP, Boolean stockP, Boolean saleP, Boolean wmP) {
-        super(name, password);
+    public Operator(String workNum, Boolean baseP, Boolean stockP, Boolean saleP, Boolean wmP) {
+        this.workNum = workNum;
         this.baseP = baseP;
         this.stockP = stockP;
         this.saleP = saleP;
         this.wmP = wmP;
+    }
+
+    public String getWorkNum() {
+        return workNum;
     }
 
     public Boolean getBaseP() {
@@ -49,4 +57,62 @@ public class Operator extends BaseUserType {
     public void setWmP(Boolean wmP) {
         this.wmP = wmP;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getId_num() {
+        return id_num;
+    }
+
+    public void setId_num(String id_num) {
+        this.id_num = id_num;
+    }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 }

@@ -14,6 +14,9 @@ public class AdminMain extends Application {
         Parent root = FXMLLoader.load (getClass ().getResource (LAYOUT));
         Scene scene = new Scene (root);
         primaryStage.setScene (scene);
+        primaryStage.setMinWidth(1400);
+        primaryStage.setWidth(1400);
+        primaryStage.setHeight(700);
         primaryStage.setTitle ("系统维护");
         primaryStage.setOnCloseRequest(new CloseWindowEvent());
         primaryStage.show ();

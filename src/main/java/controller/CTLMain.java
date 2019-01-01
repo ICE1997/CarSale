@@ -14,7 +14,6 @@ import useraccount.AdminAccount;
 import useraccount.BaseUserAccount;
 import useraccount.OperatorAccount;
 import usertype.Admin;
-import usertype.BaseUserType;
 import usertype.Operator;
 
 import java.net.URL;
@@ -106,7 +105,6 @@ public class CTLMain implements Initializable {
         }
     }
 
-
     private int judgeUserType() {
         if (user_type_group.getSelectedToggle() == user_type_operator) {
             return USER_TYPE_OPERATOR;
@@ -116,16 +114,13 @@ public class CTLMain implements Initializable {
     }
 
     private boolean login() throws SQLException {
-        BaseUserType user = null;
         if (inputIsValid()) {
             if (judgeUserType() == USER_TYPE_OPERATOR) {
-                user = new Operator(input_username.getText(), input_password.getText());
-                userAccount = new OperatorAccount((Operator) user, conn);
+                userAccount = new OperatorAccount(input_username.getText(),input_password.getText(),conn);
             }
 
             if (judgeUserType() == USER_TYPE_ADMIN) {
-                user = new Admin(input_username.getText(), input_password.getText());
-                userAccount = new AdminAccount((Admin) user, conn);
+                userAccount = new AdminAccount(input_username.getText(),input_password.getText(),conn);
             }
 
             if (userAccount != null) {

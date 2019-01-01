@@ -1,8 +1,12 @@
 package usertype;
 
-public class Admin extends BaseUserType {
+public class Admin{
+    private String workNum;
+    public Admin(String workNum) {
+        this.workNum = workNum;
+    }
 
-    public Admin(String name, String password) {
-        super (name, password);
+    public String getWorkNum() {
+        return workNum;
     }
 }
