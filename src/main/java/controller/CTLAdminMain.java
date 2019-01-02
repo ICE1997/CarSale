@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
@@ -29,7 +28,7 @@ public class CTLAdminMain implements Initializable {
     @FXML
     private SplitPane admin_main;
 
-    private final String ADMIN_MAIN_SEC = "../app/layouts/admin_main_display_operator.fxml";
+    private final String ADMIN_MAIN_SEC = "../app/layouts/admin_main_update_operator.fxml";
     private ObservableList<GridPane> gridPanes = FXCollections.observableArrayList();
     private GridPane selected_pane = null;
     private String selected_number = null;
@@ -39,12 +38,12 @@ public class CTLAdminMain implements Initializable {
         try {
             Parent sec = FXMLLoader.load (getClass ().getResource (ADMIN_MAIN_SEC));
             admin_main.getItems ().add (sec);
-
         } catch (IOException e) {
             e.printStackTrace ();
         }
         loadAllOperators();
     }
+
     private void loadAllOperators() {
         info_simple_operator.setOnMouseClicked(new SelectItemEvent());
         info_simple_operator.setItems(gridPanes);
@@ -67,8 +66,8 @@ public class CTLAdminMain implements Initializable {
             gridPane.add(name, 1, 0);
             gridPane.add(sex, 2, 0);
             gridPane.add(age, 3, 0);
-
             gridPanes.add(gridPane);
+
         }
     }
 
@@ -77,6 +76,7 @@ public class CTLAdminMain implements Initializable {
 
     class SelectItemEvent implements EventHandler<MouseEvent>{
         private ContextMenu contextMenu = null;
+
         @Override
         public void handle(MouseEvent event) {
             selected_pane = info_simple_operator.getSelectionModel().getSelectedItem();
@@ -90,6 +90,7 @@ public class CTLAdminMain implements Initializable {
         }
 
         class AdminContextMenu extends ContextMenu {
+
             private AdminContextMenu INSTANCE = null;
             public AdminContextMenu() {
                 MenuItem add = new MenuItem("新增");

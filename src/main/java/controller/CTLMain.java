@@ -13,7 +13,6 @@ import model.Database;
 import useraccount.AdminAccount;
 import useraccount.BaseUserAccount;
 import useraccount.OperatorAccount;
-import usertype.Admin;
 import usertype.Operator;
 
 import java.net.URL;
