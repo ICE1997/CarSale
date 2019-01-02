@@ -5,34 +5,46 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CTLAdminMain implements Initializable {
     @FXML
     private ListView<GridPane> info_simple_operator;//操作员信息列表
+
+    @FXML
+    private SplitPane admin_main;
+
+    private final String ADMIN_MAIN_SEC = "../app/layouts/admin_main_display_operator.fxml";
     private ObservableList<GridPane> gridPanes = FXCollections.observableArrayList();
     private GridPane selected_pane = null;
     private String selected_number = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            Parent sec = FXMLLoader.load (getClass ().getResource (ADMIN_MAIN_SEC));
+            admin_main.getItems ().add (sec);
+
+        } catch (IOException e) {
+            e.printStackTrace ();
+        }
         loadAllOperators();
     }
-
     private void loadAllOperators() {
         info_simple_operator.setOnMouseClicked(new SelectItemEvent());
         info_simple_operator.setItems(gridPanes);

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" minWidth="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" text="工号:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="姓名:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="性别:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="年龄:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="出生日期:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="身份证号:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="联系电话:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="9">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="联系地址:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="身份权限:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="11">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="11">
+            <children>
+                <Label text="基本信息管理">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Label>
+                <Label text="进货管理">
+                    <HBox.margin>
+                        <Insets left="70.0" />
+                    </HBox.margin>
+                </Label>
+                <Label text="销售管理">
+                    <HBox.margin>
+                        <Insets left="70.0" />
+                    </HBox.margin>
+                </Label>
+                <Label text="仓库管理">
+                    <HBox.margin>
+                        <Insets left="70.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </HBox>
+        <Label text="安徽省芜湖市南陵县弋江镇合义何胡自然村" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="10">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="15155346991" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="9">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="340223199706051112" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="8">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="1997-06-05" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="7">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="18" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="6">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="男" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="5">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="何福生" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="2017211600" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin>
+        </Label>
+    </children>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+</GridPane>

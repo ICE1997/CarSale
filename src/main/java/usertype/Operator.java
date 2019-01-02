@@ -2,10 +2,10 @@ package usertype;
 
 public class Operator {
     private String workNum;
-    private Boolean baseP = false;
-    private Boolean stockP = false;
-    private Boolean saleP = false;
-    private Boolean wmP = false;
+    private Boolean baseP;
+    private Boolean stockP;
+    private Boolean saleP;
+    private Boolean wmP;
     private String name;
     private String gender;
     private String age;
@@ -21,6 +21,22 @@ public class Operator {
         this.saleP = saleP;
         this.wmP = wmP;
     }
+
+    public Operator(String workNum, Boolean baseP, Boolean stockP, Boolean saleP, Boolean wmP, String name, String gender, String age, String birthday, String id_num, String phone_num, String address) {
+        this.workNum = workNum;
+        this.baseP = baseP;
+        this.stockP = stockP;
+        this.saleP = saleP;
+        this.wmP = wmP;
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.birthday = birthday;
+        this.id_num = id_num;
+        this.phone_num = phone_num;
+        this.address = address;
+    }
+
 
     public String getWorkNum() {
         return workNum;
