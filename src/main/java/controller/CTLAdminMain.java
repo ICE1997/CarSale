@@ -10,13 +10,16 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import model.Database;
+import model.StaticData;
 import useraccount.OperatorAccountManager;
 import usertype.Operator;
 
@@ -59,7 +62,8 @@ public class CTLAdminMain implements Initializable {
     }
 
     private void displayOperator() throws IOException {
-        Parent secDisplay = FXMLLoader.load (getClass ().getResource (ADMIN_MAIN_SEC_DISPLAY));
+        FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_DISPLAY)));
+        Parent secDisplay = fxmlLoader.load ();
         admin_main.getItems ().set (1,secDisplay);
     }
 
@@ -70,11 +74,6 @@ public class CTLAdminMain implements Initializable {
         LinkedList<Operator> operators = operatorAccountManager.getAllOperator();
 
         for (Operator operator : operators) {
-//            System.out.println(operator.getWorkNum() + operator.getName() + operator.isGirl() + operator.getAge() + operator.getBirthday() + operator.getId_num() + operator.getPhone_num() + operator.getAddress());
-//
-//            for(Boolean permisson : operator.getPermissions()) {
-//                System.out.print(permisson);
-//            }
 
             GridPane gridPane = new GridPane();
 
@@ -106,14 +105,22 @@ public class CTLAdminMain implements Initializable {
     }
 
     class SelectItemEvent implements EventHandler<MouseEvent>{
-        private ContextMenu contextMenu = null;
 
+        private ContextMenu contextMenu = null;
         @Override
         public void handle(MouseEvent event) {
             selected_pane = info_simple_operator.getSelectionModel().getSelectedItem();
             ObservableList<Node> label = selected_pane.getChildren();
             selected_number = ((Label)(label.get(0))).getText();
-            System.out.println(info_simple_operator.getSelectionModel().getSelectedItems());
+            if(event.getButton () == MouseButton.PRIMARY){
+                try {
+                    displayOperator ();
+                    StaticData.selected_operator_work_num = selected_number;
+                } catch (IOException e) {
+                    e.printStackTrace ();
+                }
+            }
+//            System.out.println(info_simple_operator.getSelectionModel().getSelectedItems());
             if(contextMenu==null) {
                 contextMenu = new AdminContextMenu().getInstance();
             }
@@ -164,22 +171,22 @@ public class CTLAdminMain implements Initializable {
     }
 
     class AddNewOperatorEvent implements EventHandler<ActionEvent> {
-
         @Override
         public void handle(ActionEvent event) {
             try {
                 changeToAddOperatorSurface();
                 OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
                 operatorAccountManager.addOperator(null);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         }
         public void changeToAddOperatorSurface() throws IOException {
-                Parent secAdd = FXMLLoader.load (getClass ().getResource (ADMIN_MAIN_SEC_ADD));
-                admin_main.getItems ().set (1, secAdd);
+            FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_ADD)));
+            CTLAdminMainAdd ctlAdminMainAdd = fxmlLoader.getController ();
+            Parent secAdd = fxmlLoader.load ();
+
+            admin_main.getItems ().set (1, secAdd);
         }
     }
 
@@ -190,21 +197,19 @@ public class CTLAdminMain implements Initializable {
                 OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
                 operatorAccountManager.updateOperator(null);
                 changeToUpdateOperatorSurface();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         }
 
         public void changeToUpdateOperatorSurface() throws IOException {
-            Parent secUpdate = FXMLLoader.load (getClass ().getResource (ADMIN_MAIN_SEC_UPDATE));
+            FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_UPDATE)));
+            Parent secUpdate = fxmlLoader.load ();
             admin_main.getItems ().set (1,secUpdate);
         }
     }
 
     class RefreshEvent implements EventHandler<ActionEvent> {
-
         @Override
         public void handle(ActionEvent event) {
             try {
