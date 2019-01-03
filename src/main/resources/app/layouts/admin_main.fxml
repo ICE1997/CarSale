@@ -9,11 +9,12 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="admin_main" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CTLAdminMain">
+<SplitPane fx:id="admin_main" dividerPositions="0.5" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CTLAdminMain">
    <items>
       <VBox prefWidth="400.0">
          <children>
@@ -24,7 +25,7 @@
                     <MenuItem mnemonicParsing="false" text="新增" />
                         <MenuItem mnemonicParsing="false" text="删除" />
                         <MenuItem mnemonicParsing="false" text="修改" />
-                        <MenuItem mnemonicParsing="false" text="刷新" />
+                        <MenuItem fx:id="menu_item_refresh" mnemonicParsing="false" text="刷新" />
                   </items>
                 </Menu>
               </menus>
@@ -83,5 +84,6 @@
             <ListView id="info_operator" fx:id="info_simple_operator" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
+      <Pane prefHeight="200.0" prefWidth="200.0" visible="false" />
    </items>
 </SplitPane>

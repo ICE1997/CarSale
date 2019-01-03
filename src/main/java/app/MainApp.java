@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
     private final String LAYOUT = "layouts/main.fxml";
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource(LAYOUT));
@@ -20,5 +19,4 @@ public class MainApp extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
-
 }
