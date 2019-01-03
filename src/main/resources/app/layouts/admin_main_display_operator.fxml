@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:controller="controller.CTLAdminMainDisplay" alignment="CENTER" minWidth="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" minWidth="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CTLAdminMainDisplay">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,7 +89,7 @@
         </Label>
         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="11">
             <children>
-                <Label text="基本信息管理">
+                <Label fx:id="admin_display_label_base" text="基本信息管理" visible="false">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -97,17 +97,17 @@
                         <Insets left="20.0" />
                     </padding>
                 </Label>
-                <Label text="进货管理">
+                <Label fx:id="admin_display_label_stock" text="进货管理" visible="false">
                     <HBox.margin>
                         <Insets left="70.0" />
                     </HBox.margin>
                 </Label>
-                <Label text="销售管理">
+                <Label fx:id="admin_display_label_sale" text="销售管理" visible="false">
                     <HBox.margin>
                         <Insets left="70.0" />
                     </HBox.margin>
                 </Label>
-                <Label text="仓库管理">
+                <Label fx:id="admin_display_label_wm" text="仓库管理" visible="false">
                     <HBox.margin>
                         <Insets left="70.0" />
                     </HBox.margin>
@@ -117,42 +117,42 @@
                 <Insets />
             </opaqueInsets>
         </HBox>
-        <Label text="安徽省芜湖市南陵县弋江镇合义何胡自然村" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="10">
+        <Label fx:id="admin_display_label_address" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="10">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="15155346991" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="9">
+        <Label fx:id="admin_display_label_phone_num" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="9">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="340223199706051112" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="8">
+        <Label fx:id="admin_display_label_card_num" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="8">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="1997-06-05" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="7">
+        <Label fx:id="admin_display_label_birthday" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="7">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="18" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="6">
+        <Label fx:id="admin_display_label_age" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="6">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="男" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="5">
+        <Label fx:id="admin_display_label_gender" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="5">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="何福生" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="4">
+        <Label fx:id="admin_display_label_name" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="4">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>
         </Label>
-        <Label text="2017211600" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="3">
+        <Label fx:id="admin_display_label_work_num" GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="3">
             <GridPane.margin>
                 <Insets left="20.0" />
             </GridPane.margin>

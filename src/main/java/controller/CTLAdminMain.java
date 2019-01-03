@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
@@ -19,7 +18,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import model.Database;
-import model.StaticData;
+import util.StaticDataManager;
 import useraccount.OperatorAccountManager;
 import usertype.Operator;
 
@@ -32,15 +31,17 @@ import java.util.ResourceBundle;
 
 public class CTLAdminMain implements Initializable {
     @FXML
-    private ListView<GridPane> info_simple_operator;//操作员信息列表
-    @FXML
     private SplitPane admin_main;//管理员主界面
     @FXML
-    private MenuItem menu_item_refresh;//刷新菜单
-
-    private final String ADMIN_MAIN_SEC_DISPLAY = "../app/layouts/admin_main_display_operator.fxml";
-    private final String ADMIN_MAIN_SEC_ADD = "../app/layouts/admin_main_add_operator.fxml";
-    private final String ADMIN_MAIN_SEC_UPDATE = "../app/layouts/admin_main_update_operator.fxml";
+    private ListView<GridPane> admin_main_list_simple_operator;//操作员信息列表
+    @FXML
+    private MenuItem admin_main_menu_item_add;//增加操作员菜单栏
+    @FXML
+    private MenuItem admin_main_menu_item_delete;//删除操作员菜单栏
+    @FXML
+    private MenuItem admin_main_menu_item_update;//更新操作员菜单栏
+    @FXML
+    private MenuItem admin_main_menu_item_refresh;//刷新菜单项
 
     private ObservableList<GridPane> gridPanes = FXCollections.observableArrayList();
     private GridPane selected_pane = null;
@@ -51,41 +52,43 @@ public class CTLAdminMain implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             conn = Database.getConnection();
-            menu_item_refresh.setOnAction(new RefreshEvent());
+            StaticDataManager.conn = conn;
+            admin_main_menu_item_refresh.setOnAction(new RefreshEvent());
+            admin_main_menu_item_add.setOnAction(new AddNewOperatorEvent());
+            admin_main_menu_item_delete.setOnAction(new DeleteItemEvent());
+            admin_main_menu_item_update.setOnAction(new UpdateOperatorEvent());
             displayOperator();
             loadAllOperators();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
 
     private void displayOperator() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_DISPLAY)));
-        Parent secDisplay = fxmlLoader.load ();
+        String ADMIN_MAIN_SEC_DISPLAY = "../app/layouts/admin_main_display_operator.fxml";
+        Parent secDisplay = FXMLLoader.load((getClass().getResource(ADMIN_MAIN_SEC_DISPLAY)));
         admin_main.getItems ().set (1,secDisplay);
     }
 
     private void loadAllOperators() throws SQLException {
-        info_simple_operator.setOnMouseClicked(new SelectItemEvent());
-        info_simple_operator.setItems(gridPanes);
-        OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
+        admin_main_list_simple_operator.setOnMouseClicked(new SelectItemEvent());
+        admin_main_list_simple_operator.setItems(gridPanes);
+        OperatorAccountManager operatorAccountManager = new OperatorAccountManager();
         LinkedList<Operator> operators = operatorAccountManager.getAllOperator();
-
+        StaticDataManager.operators_from_database = operators;
         for (Operator operator : operators) {
 
             GridPane gridPane = new GridPane();
 
             Label number = new Label(operator.getWorkNum());
             Label name = new Label(operator.getName());
-            Label age = new Label(Integer.toString(operator.getAge()));
-            Label sex;
+            Label age = new Label(operator.getAge());
+            Label gender;
 
             if(operator.isGirl()){
-                sex = new Label("女");
+                gender = new Label("女");
             }else {
-                sex = new Label("男");
+                gender = new Label("男");
             }
 
             for (int j = 0; j < 4; j++) {
@@ -98,33 +101,42 @@ public class CTLAdminMain implements Initializable {
 
             gridPane.add(number, 0, 0);
             gridPane.add(name, 1, 0);
-            gridPane.add(sex, 2, 0);
+            gridPane.add(gender, 2, 0);
             gridPane.add(age, 3, 0);
             gridPanes.add(gridPane);
         }
     }
 
     class SelectItemEvent implements EventHandler<MouseEvent>{
-
         private ContextMenu contextMenu = null;
         @Override
         public void handle(MouseEvent event) {
-            selected_pane = info_simple_operator.getSelectionModel().getSelectedItem();
-            ObservableList<Node> label = selected_pane.getChildren();
-            selected_number = ((Label)(label.get(0))).getText();
+            if (admin_main_list_simple_operator!=null) {
+                selected_pane = admin_main_list_simple_operator.getSelectionModel().getSelectedItem();
+            }
+            if(selected_pane != null ) {
+                ObservableList<Node> label = selected_pane.getChildren();
+                selected_number = ((Label)(label.get(0))).getText();
+            }else {
+                System.out.println("Bug???");
+            }
+
             if(event.getButton () == MouseButton.PRIMARY){
                 try {
+                    StaticDataManager.selected_operator_work_num = selected_number;
                     displayOperator ();
-                    StaticData.selected_operator_work_num = selected_number;
                 } catch (IOException e) {
                     e.printStackTrace ();
                 }
             }
-//            System.out.println(info_simple_operator.getSelectionModel().getSelectedItems());
+
             if(contextMenu==null) {
                 contextMenu = new AdminContextMenu().getInstance();
             }
-            selected_pane.setOnContextMenuRequested((ContextMenuEvent event1) -> contextMenu.show(selected_pane, event1.getScreenX(), event1.getScreenY()));
+
+            if(selected_pane != null ) {
+                selected_pane.setOnContextMenuRequested((ContextMenuEvent event1) -> contextMenu.show(selected_pane, event1.getScreenX(), event1.getScreenY()));
+            }
         }
 
         class AdminContextMenu extends ContextMenu {
@@ -133,9 +145,11 @@ public class CTLAdminMain implements Initializable {
                 MenuItem add = new MenuItem("新增");
                 MenuItem update = new MenuItem("修改");
                 MenuItem delete = new MenuItem("删除");
+
                 delete.setOnAction(new DeleteItemEvent());
                 add.setOnAction(new AddNewOperatorEvent());
                 update.setOnAction(new UpdateOperatorEvent());
+
                 getItems().addAll(add,update,delete);
             }
 
@@ -152,11 +166,11 @@ public class CTLAdminMain implements Initializable {
         @Override
         public void handle(ActionEvent event) {
             try {
-                OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
+                OperatorAccountManager operatorAccountManager = new OperatorAccountManager();
                 if (selected_pane != null) {
                     if(operatorAccountManager.isExist(selected_number)) {
                         operatorAccountManager.removeOperator(selected_number);
-                        info_simple_operator.getItems().remove(selected_pane);
+                        admin_main_list_simple_operator.getItems().remove(selected_pane);
                         selected_pane = null;
                     }else {
                         System.out.println("此用户不存在");
@@ -175,17 +189,14 @@ public class CTLAdminMain implements Initializable {
         public void handle(ActionEvent event) {
             try {
                 changeToAddOperatorSurface();
-                OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
-                operatorAccountManager.addOperator(null);
-            } catch (IOException | SQLException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         public void changeToAddOperatorSurface() throws IOException {
+            String ADMIN_MAIN_SEC_ADD = "../app/layouts/admin_main_add_operator.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_ADD)));
-            CTLAdminMainAdd ctlAdminMainAdd = fxmlLoader.getController ();
             Parent secAdd = fxmlLoader.load ();
-
             admin_main.getItems ().set (1, secAdd);
         }
     }
@@ -194,17 +205,20 @@ public class CTLAdminMain implements Initializable {
         @Override
         public void handle(ActionEvent event) {
             try {
-                OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
-                operatorAccountManager.updateOperator(null);
-                changeToUpdateOperatorSurface();
-            } catch (IOException | SQLException e) {
+                if (selected_pane != null) {
+                    changeToUpdateOperatorSurface();
+                }else {
+                    System.out.println("未选择要修改的节点！");
+                }
+
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
         public void changeToUpdateOperatorSurface() throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_UPDATE)));
-            Parent secUpdate = fxmlLoader.load ();
+            String ADMIN_MAIN_SEC_UPDATE = "../app/layouts/admin_main_update_operator.fxml";
+            Parent secUpdate = FXMLLoader.load((getClass().getResource(ADMIN_MAIN_SEC_UPDATE)));
             admin_main.getItems ().set (1,secUpdate);
         }
     }
@@ -213,9 +227,8 @@ public class CTLAdminMain implements Initializable {
         @Override
         public void handle(ActionEvent event) {
             try {
-                OperatorAccountManager operatorAccountManager = new OperatorAccountManager(conn);
-                operatorAccountManager.addOperator(null);
-                info_simple_operator.getItems().remove(0,info_simple_operator.getItems().size());
+                selected_pane = null;
+                admin_main_list_simple_operator.getItems().remove(0, admin_main_list_simple_operator.getItems().size());
                 loadAllOperators();
             } catch (SQLException e) {
                 e.printStackTrace();

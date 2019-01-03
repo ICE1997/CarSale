@@ -22,10 +22,10 @@
               <menus>
                 <Menu mnemonicParsing="false" text="操作">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="新增" />
-                        <MenuItem mnemonicParsing="false" text="删除" />
-                        <MenuItem mnemonicParsing="false" text="修改" />
-                        <MenuItem fx:id="menu_item_refresh" mnemonicParsing="false" text="刷新" />
+                    <MenuItem fx:id="admin_main_menu_item_add" mnemonicParsing="false" text="新增" />
+                        <MenuItem fx:id="admin_main_menu_item_delete" mnemonicParsing="false" text="删除" />
+                        <MenuItem fx:id="admin_main_menu_item_update" mnemonicParsing="false" text="修改" />
+                        <MenuItem fx:id="admin_main_menu_item_refresh" mnemonicParsing="false" text="刷新" />
                   </items>
                 </Menu>
               </menus>
@@ -81,7 +81,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </GridPane>
-            <ListView id="info_operator" fx:id="info_simple_operator" VBox.vgrow="ALWAYS" />
+            <ListView id="info_operator" fx:id="admin_main_list_simple_operator" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
       <Pane prefHeight="200.0" prefWidth="200.0" visible="false" />

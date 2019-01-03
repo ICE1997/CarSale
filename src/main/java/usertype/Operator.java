@@ -10,12 +10,27 @@ public class Operator {
     private Boolean wmP;
     private String name;
     private boolean gender;
-    private int age;
+    private String age;
     private String birthday;
     private String id_num;
     private String phone_num;
     private String address;
     private LinkedList<Boolean> permissions;
+
+    public Operator(String workNum, String name, boolean gender, String age, String birthday, String id_num, String phone_num, String address,Boolean baseP, Boolean stockP, Boolean saleP, Boolean wmP) {
+        this.workNum = workNum;
+        this.baseP = baseP;
+        this.stockP = stockP;
+        this.saleP = saleP;
+        this.wmP = wmP;
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.birthday = birthday;
+        this.id_num = id_num;
+        this.phone_num = phone_num;
+        this.address = address;
+    }
 
     public Operator(String workNum, Boolean baseP, Boolean stockP, Boolean saleP, Boolean wmP) {
         this.workNum = workNum;
@@ -25,7 +40,7 @@ public class Operator {
         this.wmP = wmP;
     }
 
-    public Operator(String workNum, String name, boolean gender, int age, String birthday, String id_num, String phone_num, String address, LinkedList<Boolean> permissions) {
+    public Operator(String workNum, String name, boolean gender, String age, String birthday, String id_num, String phone_num, String address, LinkedList<Boolean> permissions) {
         this.workNum = workNum;
         this.name = name;
         this.gender = gender;
@@ -38,7 +53,7 @@ public class Operator {
         baseP = permissions.get(0);
         stockP = permissions.get(1);
         saleP = permissions.get(2);
-        saleP = permissions.get(3);
+        wmP = permissions.get(3);
     }
 
     public String getWorkNum() {
@@ -65,11 +80,11 @@ public class Operator {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
