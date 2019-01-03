@@ -9,7 +9,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import useraccount.OperatorAccountManager;
-import util.StaticDataManager;
 import usertype.Operator;
 import java.net.URL;
 import java.sql.SQLException;
@@ -56,47 +55,20 @@ public class CTLAdminMainAdd implements Initializable {
             String workNum = admin_add_input_work_num.getText();
             String password = admin_add_input_password.getText();
             String name = admin_add_input_name.getText();
-            boolean gender;
-            if ("男".equals(admin_add_input_gender.getText())){
-                gender = false;
-            }else {
-                gender = true;
-            }
+            boolean gender = !"男".equals(admin_add_input_gender.getText());
             String age = admin_add_input_age.getText();
             String birthday = admin_add_input_birthday.getText();
             String id_num = admin_add_input_card_num.getText();
             String phone_num = admin_add_input_phone_num.getText();
             String address = admin_add_input_address.getText();
-
-            Boolean baseP ;
-            if(admin_add_checkbox_base.isSelected()) {
-                baseP = true;
-            }else {
-                baseP = false;
-            }
-            Boolean stockP;
-            if(admin_add_checkbox_stock.isSelected()) {
-                stockP = true;
-            }else {
-                stockP = false;
-            }
-            Boolean saleP;
-            if(admin_add_checkbox_sale.isSelected()) {
-                saleP = true;
-            }else {
-                saleP = false;
-            }
-            Boolean wmP;
-            if(admin_add_checkbox_wm.isSelected()) {
-                wmP = true;
-            }else {
-                wmP = false;
-            }
-            Operator operator = new Operator(workNum,name,gender,age,birthday,id_num,phone_num,address,baseP,stockP,saleP,wmP);
+            boolean baseP = admin_add_checkbox_base.isSelected();
+            boolean stockP = admin_add_checkbox_stock.isSelected();
+            boolean saleP = admin_add_checkbox_sale.isSelected();
+            boolean wmP = admin_add_checkbox_wm.isSelected();
+            Operator operator = new Operator(workNum, name, gender, age, birthday, id_num, phone_num, address, baseP, stockP, saleP, wmP);
             try {
                 OperatorAccountManager operatorAccountManager = new OperatorAccountManager();
-                operatorAccountManager.addOperator(operator,password);
-
+                operatorAccountManager.addOperator(operator, password);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

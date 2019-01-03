@@ -170,8 +170,6 @@ public class CTLMain implements Initializable {
                         switchTo(new AdminMain());
                     }
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }

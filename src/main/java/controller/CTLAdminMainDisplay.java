@@ -2,9 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import usertype.Operator;
 import util.StaticDataManager;
 
@@ -29,27 +27,28 @@ public class CTLAdminMainDisplay implements Initializable {
     @FXML
     private Label admin_display_label_address;
     @FXML
-    private Label  admin_display_label_base;
+    private Label admin_display_label_base;
     @FXML
-    private Label  admin_display_label_stock;
+    private Label admin_display_label_stock;
     @FXML
-    private Label  admin_display_label_sale;
+    private Label admin_display_label_sale;
     @FXML
-    private Label  admin_display_label_wm;
+    private Label admin_display_label_wm;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initSurf();
     }
 
-    void initSurf() {
+    private void initSurf() {
         Operator operator = StaticDataManager.getOperator();
-        if(operator != null) {
+        if (operator != null) {
             admin_display_label_work_num.setText(operator.getWorkNum());
             admin_display_label_name.setText(operator.getName());
 
-            if(operator.isGirl()){
+            if (operator.isGirl()) {
                 admin_display_label_gender.setText("女");
-            }else {
+            } else {
                 admin_display_label_gender.setText("男");
             }
 
@@ -59,31 +58,31 @@ public class CTLAdminMainDisplay implements Initializable {
             admin_display_label_phone_num.setText(operator.getPhone_num());
             admin_display_label_address.setText(operator.getAddress());
 
-           if(operator.getBaseP()) {
-               admin_display_label_base.setVisible(true);
-           }else {
-               admin_display_label_base.setVisible(false);
-           }
+            if (operator.getBaseP()) {
+                admin_display_label_base.setVisible(true);
+            } else {
+                admin_display_label_base.setVisible(false);
+            }
 
-            if(operator.getStockP()) {
+            if (operator.getStockP()) {
                 admin_display_label_stock.setVisible(true);
-            }else {
+            } else {
                 admin_display_label_stock.setVisible(false);
             }
 
-            if(operator.getSaleP()) {
+            if (operator.getSaleP()) {
                 admin_display_label_sale.setVisible(true);
-            }else {
+            } else {
                 admin_display_label_sale.setVisible(false);
             }
 
-            if(operator.getWmP()) {
+            if (operator.getWmP()) {
                 admin_display_label_wm.setVisible(true);
-            }else {
+            } else {
                 admin_display_label_wm.setVisible(false);
             }
 
-        }else {
+        } else {
             System.out.println("Operator为空！");
         }
     }

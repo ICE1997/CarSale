@@ -18,9 +18,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import model.Database;
-import util.StaticDataManager;
 import useraccount.OperatorAccountManager;
 import usertype.Operator;
+import util.StaticDataManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +30,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class CTLAdminMain implements Initializable {
+    private Connection conn;
     @FXML
     private SplitPane admin_main;//管理员主界面
     @FXML
@@ -42,11 +43,9 @@ public class CTLAdminMain implements Initializable {
     private MenuItem admin_main_menu_item_update;//更新操作员菜单栏
     @FXML
     private MenuItem admin_main_menu_item_refresh;//刷新菜单项
-
     private ObservableList<GridPane> gridPanes = FXCollections.observableArrayList();
     private GridPane selected_pane = null;
     private String selected_number = null;
-    Connection conn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,7 +66,7 @@ public class CTLAdminMain implements Initializable {
     private void displayOperator() throws IOException {
         String ADMIN_MAIN_SEC_DISPLAY = "../app/layouts/admin_main_display_operator.fxml";
         Parent secDisplay = FXMLLoader.load((getClass().getResource(ADMIN_MAIN_SEC_DISPLAY)));
-        admin_main.getItems ().set (1,secDisplay);
+        admin_main.getItems().set(1, secDisplay);
     }
 
     private void loadAllOperators() throws SQLException {
@@ -85,9 +84,9 @@ public class CTLAdminMain implements Initializable {
             Label age = new Label(operator.getAge());
             Label gender;
 
-            if(operator.isGirl()){
+            if (operator.isGirl()) {
                 gender = new Label("女");
-            }else {
+            } else {
                 gender = new Label("男");
             }
 
@@ -107,40 +106,42 @@ public class CTLAdminMain implements Initializable {
         }
     }
 
-    class SelectItemEvent implements EventHandler<MouseEvent>{
+    class SelectItemEvent implements EventHandler<MouseEvent> {
         private ContextMenu contextMenu = null;
+
         @Override
         public void handle(MouseEvent event) {
-            if (admin_main_list_simple_operator!=null) {
+            if (admin_main_list_simple_operator != null) {
                 selected_pane = admin_main_list_simple_operator.getSelectionModel().getSelectedItem();
             }
-            if(selected_pane != null ) {
+            if (selected_pane != null) {
                 ObservableList<Node> label = selected_pane.getChildren();
-                selected_number = ((Label)(label.get(0))).getText();
-            }else {
+                selected_number = ((Label) (label.get(0))).getText();
+            } else {
                 System.out.println("Bug???");
             }
 
-            if(event.getButton () == MouseButton.PRIMARY){
+            if (event.getButton() == MouseButton.PRIMARY) {
                 try {
                     StaticDataManager.selected_operator_work_num = selected_number;
-                    displayOperator ();
+                    displayOperator();
                 } catch (IOException e) {
-                    e.printStackTrace ();
+                    e.printStackTrace();
                 }
             }
 
-            if(contextMenu==null) {
+            if (contextMenu == null) {
                 contextMenu = new AdminContextMenu().getInstance();
             }
 
-            if(selected_pane != null ) {
+            if (selected_pane != null) {
                 selected_pane.setOnContextMenuRequested((ContextMenuEvent event1) -> contextMenu.show(selected_pane, event1.getScreenX(), event1.getScreenY()));
             }
         }
 
         class AdminContextMenu extends ContextMenu {
             private AdminContextMenu INSTANCE = null;
+
             public AdminContextMenu() {
                 MenuItem add = new MenuItem("新增");
                 MenuItem update = new MenuItem("修改");
@@ -150,11 +151,11 @@ public class CTLAdminMain implements Initializable {
                 add.setOnAction(new AddNewOperatorEvent());
                 update.setOnAction(new UpdateOperatorEvent());
 
-                getItems().addAll(add,update,delete);
+                getItems().addAll(add, update, delete);
             }
 
             public AdminContextMenu getInstance() {
-                if(INSTANCE == null) {
+                if (INSTANCE == null) {
                     INSTANCE = new AdminContextMenu();
                 }
                 return INSTANCE;
@@ -168,14 +169,14 @@ public class CTLAdminMain implements Initializable {
             try {
                 OperatorAccountManager operatorAccountManager = new OperatorAccountManager();
                 if (selected_pane != null) {
-                    if(operatorAccountManager.isExist(selected_number)) {
+                    if (operatorAccountManager.isExist(selected_number)) {
                         operatorAccountManager.removeOperator(selected_number);
                         admin_main_list_simple_operator.getItems().remove(selected_pane);
                         selected_pane = null;
-                    }else {
+                    } else {
                         System.out.println("此用户不存在");
                     }
-                }else {
+                } else {
                     System.out.println("未选择要删除的节点！");
                 }
             } catch (SQLException e) {
@@ -193,11 +194,12 @@ public class CTLAdminMain implements Initializable {
                 e.printStackTrace();
             }
         }
-        public void changeToAddOperatorSurface() throws IOException {
+
+        void changeToAddOperatorSurface() throws IOException {
             String ADMIN_MAIN_SEC_ADD = "../app/layouts/admin_main_add_operator.fxml";
-            FXMLLoader fxmlLoader = new FXMLLoader ((getClass ().getResource (ADMIN_MAIN_SEC_ADD)));
-            Parent secAdd = fxmlLoader.load ();
-            admin_main.getItems ().set (1, secAdd);
+            FXMLLoader fxmlLoader = new FXMLLoader((getClass().getResource(ADMIN_MAIN_SEC_ADD)));
+            Parent secAdd = fxmlLoader.load();
+            admin_main.getItems().set(1, secAdd);
         }
     }
 
@@ -207,7 +209,7 @@ public class CTLAdminMain implements Initializable {
             try {
                 if (selected_pane != null) {
                     changeToUpdateOperatorSurface();
-                }else {
+                } else {
                     System.out.println("未选择要修改的节点！");
                 }
 
@@ -219,7 +221,7 @@ public class CTLAdminMain implements Initializable {
         public void changeToUpdateOperatorSurface() throws IOException {
             String ADMIN_MAIN_SEC_UPDATE = "../app/layouts/admin_main_update_operator.fxml";
             Parent secUpdate = FXMLLoader.load((getClass().getResource(ADMIN_MAIN_SEC_UPDATE)));
-            admin_main.getItems ().set (1,secUpdate);
+            admin_main.getItems().set(1, secUpdate);
         }
     }
 

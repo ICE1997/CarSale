@@ -1,17 +1,17 @@
 package useraccount;
 
-import usertype.Admin;
-import usertype.Operator;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class BaseUserAccount {
-    private String table_name;
     protected String workNum;
     protected String password;
-    protected Statement stmt;
+    Statement stmt;
+    private String table_name;
 
-    BaseUserAccount(String workNum,Connection conn) throws SQLException {
+    BaseUserAccount(String workNum, Connection conn) throws SQLException {
         stmt = conn.createStatement();
         this.workNum = workNum;
     }
@@ -24,36 +24,28 @@ public class BaseUserAccount {
 
     public boolean login() throws SQLException {
         String sql = " SELECT * FROM " + table_name + " WHERE username = '" + workNum + "'" + " AND password = '" + password + "'";
-        ResultSet resultSet = stmt.executeQuery (sql);
-        if (resultSet.next ()) {
-            return true;
-        } else {
-            return false;
-        }
+        ResultSet resultSet = stmt.executeQuery(sql);
+        return resultSet.next();
     }
 
     public boolean isExist() throws SQLException {
         String sql = " SELECT * FROM " + table_name + " WHERE username = '" + this.workNum + "'";
-        ResultSet resultSet = stmt.executeQuery (sql);
-        if (resultSet.next ()) {
-            return true;
-        } else {
-            return false;
-        }
+        ResultSet resultSet = stmt.executeQuery(sql);
+        return resultSet.next();
     }
 
     public String getPassword() throws SQLException {
         String sql = " SELECT * FROM " + table_name + " WHERE username = '" + workNum + "'";
-        ResultSet resultSet = stmt.executeQuery (sql);
+        ResultSet resultSet = stmt.executeQuery(sql);
         if (resultSet.next()) {
             return resultSet.getString("password");
-        }else {
+        } else {
             System.out.println("未找到此用户！");
             return "";
         }
     }
 
-    void setSqlTable(String table_name){
+    void setSqlTable(String table_name) {
         this.table_name = table_name;
     }
 
