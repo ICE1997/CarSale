@@ -1,4 +1,4 @@
-package usertype;
+package model.usertype;
 
 public class Admin{
     private String workNum;

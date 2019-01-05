@@ -9,11 +9,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" minWidth="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CTLAdminMainAdd">
+<GridPane alignment="CENTER" minWidth="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.CTLAdminMainUpdate">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,12 +28,12 @@
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -51,11 +50,11 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" text="工号:" underline="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
@@ -103,71 +102,61 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="11">
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-        </HBox>
-      <TextField fx:id="admin_add_input_work_num" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="admin_add_input_name" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="5">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="admin_add_input_gender" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="6">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="admin_add_input_age" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="7">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="admin_add_input_birthday" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="8">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="admin_add_input_card_num" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="9">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="admin_add_input_phone_num" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="10">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></TextField>
-      <TextArea fx:id="admin_add_input_address" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="11" GridPane.rowSpan="3">
-         <GridPane.margin>
-            <Insets bottom="20.0" left="20.0" top="10.0" />
-         </GridPane.margin></TextArea>
-      <CheckBox fx:id="admin_add_checkbox_base" mnemonicParsing="false" text="基本信息管理" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="14">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></CheckBox>
-      <CheckBox fx:id="admin_add_checkbox_stock" mnemonicParsing="false" text="进货管理" GridPane.columnIndex="8" GridPane.columnSpan="4" GridPane.rowIndex="14">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></CheckBox>
-      <CheckBox fx:id="admin_add_checkbox_sale" mnemonicParsing="false" text="销售管理" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="14">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></CheckBox>
-      <CheckBox fx:id="admin_add_checkbox_wm" mnemonicParsing="false" text="仓库管理" GridPane.columnIndex="16" GridPane.columnSpan="3" GridPane.rowIndex="14">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></CheckBox>
-      <Button id="add_btn_save" fx:id="admin_add_btn_save" mnemonicParsing="false" text="保存" GridPane.columnIndex="9" GridPane.columnSpan="3" GridPane.rowIndex="16" />
-      <Label fx:id="admin_add_error_exist" text="此操作员已存在" textFill="RED" GridPane.columnIndex="8" GridPane.columnSpan="4" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin>
-      </Label>
+        <TextField fx:id="admin_update_input_work_num" editable="false" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextField fx:id="admin_update_input_name" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="5">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextField fx:id="admin_update_input_gender" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="6">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextField fx:id="admin_update_input_age" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="7">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextField fx:id="admin_update_input_birthday" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="8">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextField fx:id="admin_update_input_card_num" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="9">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextField fx:id="admin_update_input_phone_num" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="10">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></TextField>
+        <TextArea fx:id="admin_update_input_address" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="11" GridPane.rowSpan="3">
+            <GridPane.margin>
+                <Insets bottom="20.0" left="20.0" top="10.0" />
+            </GridPane.margin></TextArea>
+        <CheckBox fx:id="admin_update_checkbox_base" mnemonicParsing="false" text="基本信息管理" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="14">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></CheckBox>
+        <CheckBox fx:id="admin_update_checkbox_stock" mnemonicParsing="false" text="进货管理" GridPane.columnIndex="8" GridPane.columnSpan="4" GridPane.rowIndex="14">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></CheckBox>
+        <CheckBox fx:id="admin_update_checkbox_sale" mnemonicParsing="false" text="销售管理" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="14">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></CheckBox>
+        <CheckBox fx:id="admin_update_checkbox_wm" mnemonicParsing="false" text="仓库管理" GridPane.columnIndex="16" GridPane.columnSpan="3" GridPane.rowIndex="14">
+            <GridPane.margin>
+                <Insets left="20.0" />
+            </GridPane.margin></CheckBox>
+        <Button fx:id="admin_update_btn_save" mnemonicParsing="false" text="保存" GridPane.columnIndex="9" GridPane.columnSpan="3" GridPane.rowIndex="16" />
       <Label text="密码:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <PasswordField fx:id="admin_add_input_password" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="4">
+      <PasswordField fx:id="admin_update_input_password" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>

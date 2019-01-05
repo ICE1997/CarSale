@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,9 +17,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import model.Database;
-import useraccount.OperatorAccountManager;
-import usertype.Operator;
+import database.Database;
+import database.useraccount.OperatorAccountManager;
+import model.usertype.Operator;
 import util.StaticDataManager;
 
 import java.io.IOException;
@@ -43,6 +43,7 @@ public class CTLAdminMain implements Initializable {
     private MenuItem admin_main_menu_item_update;//更新操作员菜单栏
     @FXML
     private MenuItem admin_main_menu_item_refresh;//刷新菜单项
+
     private ObservableList<GridPane> gridPanes = FXCollections.observableArrayList();
     private GridPane selected_pane = null;
     private String selected_number = null;
@@ -64,7 +65,7 @@ public class CTLAdminMain implements Initializable {
     }
 
     private void displayOperator() throws IOException {
-        String ADMIN_MAIN_SEC_DISPLAY = "../app/layouts/admin_main_display_operator.fxml";
+        String ADMIN_MAIN_SEC_DISPLAY = "../../app/layouts/admin/admin_main_display_operator.fxml";
         Parent secDisplay = FXMLLoader.load((getClass().getResource(ADMIN_MAIN_SEC_DISPLAY)));
         admin_main.getItems().set(1, secDisplay);
     }
@@ -196,7 +197,7 @@ public class CTLAdminMain implements Initializable {
         }
 
         void changeToAddOperatorSurface() throws IOException {
-            String ADMIN_MAIN_SEC_ADD = "../app/layouts/admin_main_add_operator.fxml";
+            String ADMIN_MAIN_SEC_ADD = "../../app/layouts/admin/admin_main_add_operator.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader((getClass().getResource(ADMIN_MAIN_SEC_ADD)));
             Parent secAdd = fxmlLoader.load();
             admin_main.getItems().set(1, secAdd);
@@ -219,7 +220,7 @@ public class CTLAdminMain implements Initializable {
         }
 
         public void changeToUpdateOperatorSurface() throws IOException {
-            String ADMIN_MAIN_SEC_UPDATE = "../app/layouts/admin_main_update_operator.fxml";
+            String ADMIN_MAIN_SEC_UPDATE = "../../app/layouts/admin/admin_main_update_operator.fxml";
             Parent secUpdate = FXMLLoader.load((getClass().getResource(ADMIN_MAIN_SEC_UPDATE)));
             admin_main.getItems().set(1, secUpdate);
         }

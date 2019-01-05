@@ -1,6 +1,6 @@
-package useraccount;
+package database.useraccount;
 
-import usertype.Operator;
+import model.usertype.Operator;
 import util.StaticDataManager;
 
 import java.sql.Connection;
@@ -24,7 +24,7 @@ public class OperatorAccountManager {
     public LinkedList<Operator> getAllOperator() throws SQLException {
         String work_num;
         String name;
-        Boolean gender;
+        boolean gender;
         String age;
         String birthday;
         String id_num;
@@ -113,6 +113,4 @@ public class OperatorAccountManager {
         ResultSet resultSet = stmt.executeQuery(sql);
         return resultSet.next();
     }
-
-
 }

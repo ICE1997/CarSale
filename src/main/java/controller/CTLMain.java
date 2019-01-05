@@ -9,11 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Database;
-import useraccount.AdminAccount;
-import useraccount.BaseUserAccount;
-import useraccount.OperatorAccount;
-import usertype.Operator;
+import database.Database;
+import database.useraccount.AdminAccount;
+import database.useraccount.BaseUserAccount;
+import database.useraccount.OperatorAccount;
+import model.usertype.Operator;
+import util.StaticDataManager;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -73,6 +74,7 @@ public class CTLMain implements Initializable {
 
     private void initDatabase() {
         conn = Database.getConnection();
+        StaticDataManager.conn = conn;
     }
 
     private boolean userNameIsValid() {

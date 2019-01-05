@@ -1,6 +1,6 @@
-package useraccount;
+package database.useraccount;
 
-import usertype.Operator;
+import model.usertype.Operator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

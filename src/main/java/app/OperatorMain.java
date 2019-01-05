@@ -8,18 +8,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
-import usertype.Operator;
+import model.usertype.Operator;
 
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
 public class OperatorMain extends Application {
-    private final String LAYOUT = "layouts/operator_main.fxml";
-    private final String LAYOUT_TAB_BASE = "layouts/operator_tab_base.fxml";
-    private final String LAYOUT_TAB_STOCK = "layouts/operator_tab_stock.fxml";
-    private final String LAYOUT_TAB_SALE = "layouts/operator_tab_sale.fxml";
-    private final String LAYOUT_TAB_SW = "layouts/operator_tab_sw.fxml";
+    private final String LAYOUT = "layouts/operator/operator_main.fxml";
+    private final String LAYOUT_TAB_BASE = "layouts/operator/operator_tab_base.fxml";
+    private final String LAYOUT_TAB_STOCK = "layouts/operator/operator_tab_stock.fxml";
+    private final String LAYOUT_TAB_SALE = "layouts/operator/operator_tab_sale.fxml";
+    private final String LAYOUT_TAB_SW = "layouts/operator/operator_tab_sw.fxml";
     private TabPane tabPane;
     private Tab tab_base;
     private Tab tab_stock;

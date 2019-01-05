@@ -1,6 +1,6 @@
 package util;
 
-import usertype.Operator;
+import model.usertype.Operator;
 
 import java.sql.Connection;
 import java.util.LinkedList;

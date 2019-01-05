@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,9 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import useraccount.OperatorAccount;
-import useraccount.OperatorAccountManager;
-import usertype.Operator;
+import database.useraccount.OperatorAccount;
+import database.useraccount.OperatorAccountManager;
+import model.usertype.Operator;
 import util.StaticDataManager;
 
 import java.net.URL;

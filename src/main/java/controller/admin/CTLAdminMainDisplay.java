@@ -1,9 +1,9 @@
-package controller;
+package controller.admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import usertype.Operator;
+import model.usertype.Operator;
 import util.StaticDataManager;
 
 import java.net.URL;

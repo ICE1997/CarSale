@@ -1,4 +1,4 @@
-package usertype;
+package model.usertype;
 
 import java.util.LinkedList;
 

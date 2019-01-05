@@ -1,4 +1,4 @@
-package useraccount;
+package database.useraccount;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
