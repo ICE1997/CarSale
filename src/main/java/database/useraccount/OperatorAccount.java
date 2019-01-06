@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class OperatorAccount extends BaseUserAccount {
     private final String table_name = "operator_account";
 
+
     public OperatorAccount(String password, Connection conn) throws SQLException {
         super(password, conn);
         super.setSqlTable(table_name);

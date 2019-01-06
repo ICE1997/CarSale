@@ -48,7 +48,6 @@ public class OperatorMain extends Application {
     }
 
     private void initSurface() throws IOException {
-//        System.out.println(operator.getBaseP());
         if (operator.getBaseP()) {
             tab_base = new Tab("基础信息管理");
             tab_base.setId("tab_base");

@@ -1,11 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="operator_sale" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.operator.CTLOperatorSale">
+   <columnConstraints>
+      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+   </rowConstraints>
    <children>
-      <Label layoutX="277.0" layoutY="192.0" text="销售管理" />
+      <ChoiceBox fx:id="car_manufacturer" prefWidth="150.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></ChoiceBox>
+      <ChoiceBox fx:id="car_color" prefWidth="150.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></ChoiceBox>
+      <ChoiceBox fx:id="car_model" prefWidth="150.0" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></ChoiceBox>
+      <Label fx:id="stock_car_price" textFill="RED" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></Label>
+      <Label text="售价(元):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="19">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label text="制造商:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label text="型号:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label text="颜色:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label text="收益(元):" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="21">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="car_sale_price" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="19">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <Button fx:id="car_buy" mnemonicParsing="false" text="售出" textFill="RED" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="24">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Button>
+      <Separator prefWidth="200.0" GridPane.columnSpan="12" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+      <Separator prefWidth="200.0" GridPane.columnSpan="12" GridPane.rowIndex="17" GridPane.vgrow="ALWAYS" />
+      <Label text="车型:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="40.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="客户:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="40.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="收益:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="20">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="40.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="client_name" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="client_gender" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="11">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label text="姓名:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="9">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label text="性别:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="11">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label text="年龄:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="client_age" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="13">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="client_phone" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="15">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></TextField>
+      <Label text="手机号:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="15">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="car_benefit" textFill="RED" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowIndex="21">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></Label>
+      <Label text="原价(元):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="origin_price" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="21">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Label>
    </children>
-</AnchorPane>
+</GridPane>
