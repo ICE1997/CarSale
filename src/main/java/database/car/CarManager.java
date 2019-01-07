@@ -75,5 +75,4 @@ public class CarManager {
         pStmt.setInt (4,car.getOrigin_price ());
         pStmt.execute ();
     }
-
 }

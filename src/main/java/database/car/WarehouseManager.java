@@ -2,6 +2,9 @@ package database.car;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.Chart;
+import javafx.scene.chart.PieChart;
+import model.car.Car;
 import util.StaticDataManager;
 
 import java.sql.Connection;
@@ -93,12 +96,98 @@ public class WarehouseManager {
         return i;
     }
 
-    public static int getAllCarsNum() throws SQLException {
-        String sql = " SELECT COUNT(*) AS allCar FROM " + tb_name ;
+    public static ObservableList<Car> getRestCars() throws SQLException {
+        ObservableList<Car> cars = FXCollections.observableArrayList ();
+        String sql = " SELECT car_manufacturer, model, car_color, car_origin_price  FROM " + tb_name + " WHERE isSold = ?";
         PreparedStatement preparedStatement = conn.prepareStatement (sql);
+        preparedStatement.setBoolean (1,false);
         ResultSet resultSet = preparedStatement.executeQuery ();
-        int count = 0;
-        while (resultSet.next ()) count = resultSet.getInt ("allCar");
-        return count;
+        while (resultSet.next ()) {
+            Car car = new Car (resultSet.getString ("car_manufacturer"),resultSet.getString ("model"),resultSet.getInt ("car_origin_price"),resultSet.getString ("car_color"));
+            cars.add (car);
+        }
+        return cars;
+    }
+
+    public static ObservableList<PieChart.Data> getWarehouseCarsChartData() throws SQLException {
+        ObservableList<PieChart.Data> warehouseCars = FXCollections.observableArrayList ();
+        ArrayList<String> manufacturers = new ArrayList<> ();
+        String sql = " SELECT DISTINCT car_manufacturer FROM " + tb_name + " WHERE  isSold = ?";
+        PreparedStatement pStmt1 = conn.prepareStatement (sql);
+        pStmt1.setBoolean (1,false);
+        ResultSet resultSet1 = pStmt1.executeQuery ();
+        while (resultSet1.next ()) {
+            manufacturers.add (resultSet1.getString ("car_manufacturer"));
+        }//获取所有的已出售车的制造商
+
+        ArrayList<String> models = new ArrayList<> ();
+        sql = " SELECT DISTINCT model FROM " + tb_name + " WHERE car_manufacturer = ? AND isSold = ?";
+        pStmt1 = conn.prepareStatement (sql);
+        for(String s : manufacturers) {
+            pStmt1.setString (1, s);
+            pStmt1.setBoolean (2,false);
+            ResultSet resultSet = pStmt1.executeQuery ();
+            while (resultSet.next ()) {
+                models.add (resultSet.getString ("model"));
+            }
+        }//获取所有的车型
+
+        sql = " SELECT COUNT(*) AS cars_sold FROM " + tb_name + " WHERE model = ?" ;
+        for(String model : models) {
+            int count;
+            PreparedStatement pStmt = conn.prepareStatement (sql);
+            pStmt.setString (1,model);
+            ResultSet resultSet = pStmt.executeQuery ();
+            while (resultSet.next ()) {
+                count = resultSet.getInt ("cars_sold");
+                System.out.print(count);
+                if(count!=0) {
+                    warehouseCars.add (new PieChart.Data (model, count));
+                }
+            }
+        }
+        //通过已出售的车型来选择相应的数量
+        return warehouseCars;
+    }
+
+    public static ObservableList<PieChart.Data> getSoldCarsChartData() throws SQLException {
+        ObservableList<PieChart.Data> soldCars = FXCollections.observableArrayList ();
+        ArrayList<String> manufacturers = new ArrayList<> ();
+        String sql = " SELECT DISTINCT car_manufacturer FROM " + tb_name + " WHERE  isSold = ?";
+        PreparedStatement pStmt1 = conn.prepareStatement (sql);
+        pStmt1.setBoolean (1,true);
+        ResultSet resultSet1 = pStmt1.executeQuery ();
+        while (resultSet1.next ()) {
+            manufacturers.add (resultSet1.getString ("car_manufacturer"));
+        }//获取所有的已出售车的制造商
+
+        ArrayList<String> models = new ArrayList<> ();
+        sql = " SELECT DISTINCT model FROM " + tb_name + " WHERE car_manufacturer = ? AND isSold = ?";
+        pStmt1 = conn.prepareStatement (sql);
+        for(String s : manufacturers) {
+            pStmt1.setString (1, s);
+            pStmt1.setBoolean (2,true);
+            ResultSet resultSet = pStmt1.executeQuery ();
+            while (resultSet.next ()) {
+                models.add (resultSet.getString ("model"));
+            }
+        }//获取所有的车型
+
+        sql = " SELECT COUNT(*) AS cars FROM " + tb_name + " WHERE model = ?" ;
+            for(String model : models) {
+                int count;
+                PreparedStatement pStmt = conn.prepareStatement (sql);
+                pStmt.setString (1,model);
+                ResultSet resultSet = pStmt.executeQuery ();
+                while (resultSet.next ()) {
+                    count = resultSet.getInt ("cars");
+                    System.out.print(count);
+                    if(count!=0) {
+                        soldCars.add (new PieChart.Data (model, count));
+                    }
+                }
+            }
+        //通过已出售的车型来选择相应的数量
+        return soldCars;
     }
 }

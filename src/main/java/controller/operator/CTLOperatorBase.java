@@ -120,7 +120,6 @@ public class CTLOperatorBase implements Initializable {
 
         clientInfo.getColumns().addAll(clientName,clientAge,clientGender,clientPhone);
         operator_base_table.getColumns().addAll(carNum,carManufacturer,carColor,carModel,carPrice,clientInfo);
-//        operator_base_table.setRowFactory(new Row());
         operator_base_table.setOnContextMenuRequested (new EventHandler<ContextMenuEvent> () {
             ContextMenu contextMenu = null;
             @Override
