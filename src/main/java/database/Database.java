@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Database {
     private final static String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
-    private final static String DB_URL = "jdbc:mysql://47.106.132.194:3306/accounts?useUnicode=yes&characterEncoding=utf8";
-    private final static String USER = "root";
-    private final static String PSW = "ice@1997";
+    private final static String DB_URL = "jdbc:mysql:///accounts?useUnicode=yes&characterEncoding=utf8";
+    private final static String USER = "";//
+    private final static String PSW = "";//
     private static Connection conn;
     private Database() {
     }
